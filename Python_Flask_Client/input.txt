@@ -1,0 +1,1 @@
+http://192.168.1.133:9000/ocms/api/insertSensorData root 880117qazwsX/ Test system_spec_table TEST 

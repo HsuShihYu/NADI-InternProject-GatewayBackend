@@ -1,0 +1,230 @@
+{
+	"info": {
+		"_postman_id": "fe8e1667-d37f-49e2-a111-9664ab289ce1",
+		"name": "Gateway_Api_v1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Send OPCDA data to mySQL",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"System\": \"TEST\",\n  \"timeStamp\": 1111111111111111,\n  \"TimeZone\": \"Asia/Taipei\",\n  \"values\": [\n    {\n      \"id\": \"BL_202_Run_000001\",\n      \"v\": \"5560\",\n      \"t\":1583816575\n    },\n    {\n      \"id\": \"BL_202_Idle_000002\",\n      \"v\": \"5000\",\n      \"t\":1583816580\n    },\n    {\n      \"id\": \"BL_202_Status_000007\",\n      \"v\": \"14789\",\n      \"t\":1583816587121651561\n    }\n    ]\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.1.100:5000/test/v1/create_opcda",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"100"
+					],
+					"port": "5000",
+					"path": [
+						"test",
+						"v1",
+						"create_opcda"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create account configuration to mySQL",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n     \"DB_User\": \"root\",\n     \"DB_Password\": \"880117qazwsX/\", \n     \"Refresh_Number\": 100000,\n     \"DB_IP\": \"172.18.0.1\",\n     \"DB_Port\": \"5000\",\n     \"Backend_Api_Url\": \"http://192.168.1.133:9000/ocms/api/insertSensorData\"\n  }\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.1.100:5000/test/v1/account_create",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"100"
+					],
+					"port": "5000",
+					"path": [
+						"test",
+						"v1",
+						"account_create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get account configuration from mySQL",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.1.100:5000/test/v1/account_get_default",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"100"
+					],
+					"port": "5000",
+					"path": [
+						"test",
+						"v1",
+						"account_get_default"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create OPCDA set-up configuration to mySQL",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"DA_SERVER_NAME\": \"SV.OPCDAServer\",\n    \"DA_SERVER_IP\": \"localhost\",\n    \"DA_TIMEOUT\": 3000,\n    \"DA_RECORD_BAD\": 0,\n    \"DA_RECORD_ERROR\": 1,\n    \"LOG_FILE_MAX_COUNT\": 90,\n    \"SYSTEM_ID\": \"default\",\n    \"TAG_NAMES_CSV\": \"tags_name.csv\",\n    \"API_POST_URL\": \"http://192.168.1.100:5000/test/v1/create_opcda\",\n    \"API_POST_TIMEOUT\": 4000,\n    \"API_SEND_BAD\": 1,\n    \"API_SEND_ERROR\": 0,\n    \"REFRESH_RATE\": 0\n}\n"
+				},
+				"url": {
+					"raw": "http://192.168.1.100:5000/test/v1/opcda_config_create",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"100"
+					],
+					"port": "5000",
+					"path": [
+						"test",
+						"v1",
+						"opcda_config_create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get OPCDA set-up configuration from mySQL",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://192.168.1.100:5000/test/v1/get_opcda_config",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"100"
+					],
+					"port": "5000",
+					"path": [
+						"test",
+						"v1",
+						"get_opcda_config"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload csv file on web",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.1.100:5000/test/upload",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"100"
+					],
+					"port": "5000",
+					"path": [
+						"test",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download the file by using the file name (YOU CAN NOT USE THE METHOD ON POSTMAN. YOU NEED TO CHECK THE API ON BROWSER (FIREFOX))",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.1.100:5000/downloads/1597734724.csv",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"100"
+					],
+					"port": "5000",
+					"path": [
+						"downloads",
+						"1597734724.csv"
+					]
+				},
+				"description": "YOU CAN NOT USE THE METHOD ON POSTMAN. YOU NEED TO CHECK THE API ON BROWSER (FIREFOX)"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
